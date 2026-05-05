@@ -9,20 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* DESIGN MAESTRO STYLE CONFIGURATION */
+        /* DESIGN MAESTRO STYLE CONFIGURATION - SMOOTH MATTE */
         :root {
-            --bg-color: #000000;
-            --surface-color: #080808;
-            --surface-hover: #111111;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --accent-color: #D4FF00;
+            --bg-color: #0b0c10; /* Гладкий темний фон замість чистого чорного */
+            --surface-color: rgba(255, 255, 255, 0.03); /* Напівпрозора матова основа */
+            --surface-hover: rgba(255, 255, 255, 0.06); /* Світліший матовий ховер */
+            --border-color: rgba(255, 255, 255, 0.06); /* Дуже м'яка напівпрозора рамка */
+            --accent-color: #D4FF00; /* Оригінальний неоновий лайм */
             --text-primary: #FFFFFF;
             --text-secondary: #888888;
             --font-main: 'Inter', sans-serif;
             --radius-sm: 12px;
             --radius-md: 24px;
             --radius-lg: 40px;
-            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -38,17 +38,11 @@
             font-family: var(--font-main);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-        }
-
-        /* NOISE BACKGROUND TEXTURE */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 9999;
+            /* Додаємо дуже м'яке, гладке світіння на фон для об'єму (замість піксельного шуму) */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(212, 255, 0, 0.02), transparent 40%),
+                radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.01), transparent 40%);
+            background-attachment: fixed;
         }
 
         /* GLOBAL STYLES */
@@ -67,9 +61,9 @@
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(15, 16, 20, 0.75);
+            backdrop-filter: blur(20px); /* Матове розмиття */
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             padding: 8px;
             border-radius: 100px;
@@ -78,7 +72,7 @@
             justify-content: center;
             gap: 8px;
             z-index: 1000;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         .nav-item {
@@ -103,17 +97,17 @@
         
         .nav-item.primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(212, 255, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(212, 255, 0, 0.25); /* М'яка тінь */
         }
 
         /* UPLOADED LOGO */
         .mads-image-logo {
-            max-width: 350px;
+            max-width: 300px;
             width: 100%;
             height: auto;
             margin-bottom: 40px;
             display: block;
-            mix-blend-mode: lighten; /* Прибирає можливі сірі відтінки фону картинки */
+            mix-blend-mode: screen; /* Робить чорний фон логотипа прозорим */
         }
 
         /* HERO SECTION */
@@ -149,44 +143,49 @@
             margin-bottom: 40px;
         }
 
-        /* SHARED BUTTON STYLES (Hero + Contacts) */
+        /* SHARED BUTTON STYLES (Hero + Contacts) - ГЛАДКІ ТА МАТОВІ */
         .btn-action {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 16px;
             padding: 24px 36px;
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
+            border-radius: 30px; /* Більш круглі кнопки, як на скріншоті */
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 500; /* М'якший шрифт */
+            color: #E2E8F0;
             transition: var(--transition);
             cursor: pointer;
             text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .btn-action:hover {
-            background: var(--surface-hover);
+            background: rgba(255, 255, 255, 0.08);
             color: #fff;
-            border-color: var(--accent-color);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         .btn-action.highlight {
             background: var(--accent-color);
             color: #000;
-            border-color: var(--accent-color);
-            font-weight: 700;
+            border: 1px solid var(--accent-color);
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(212, 255, 0, 0.15); /* Дуже м'яке світіння, не різке */
         }
         
         .btn-action.highlight:hover {
             background: #e1ff33;
             color: #000;
             border-color: #e1ff33;
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(212, 255, 0, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(212, 255, 0, 0.25);
         }
 
         /* MARQUEE TICKER */
@@ -195,6 +194,8 @@
             overflow: hidden;
             padding: 30px 0;
             background: var(--surface-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
             transform: rotate(-1deg) scale(1.05);
@@ -256,13 +257,16 @@
 
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 Колонки (ряди) */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 20px;
             padding-bottom: 100px;
         }
 
+        /* МАТОВІ КАРТКИ (Smooth Frosted Glass) */
         .bento-card {
             background: var(--surface-color);
+            backdrop-filter: blur(24px); /* Сильне матове розмиття */
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             padding: 40px;
@@ -273,13 +277,14 @@
             min-height: 240px;
             cursor: pointer;
             position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .bento-card:hover {
             background: var(--surface-hover);
-            border-color: rgba(212, 255, 0, 0.4);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-color: rgba(212, 255, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
         }
 
         .bento-icon {
@@ -290,25 +295,26 @@
         }
 
         .bento-card h3 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
             margin-bottom: 12px;
             letter-spacing: -0.02em;
         }
 
         .bento-card p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        /* MODALS (Popups) */
+        /* MODALS (Popups) - МАТОВИЙ ФОН */
         .modal-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -316,8 +322,10 @@
         }
 
         .modal-content {
-            background: var(--surface-color);
-            border: 1px solid var(--accent-color);
+            background: rgba(15, 16, 20, 0.85);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius-md);
             padding: 40px;
             max-width: 900px;
@@ -326,6 +334,7 @@
             overflow-y: auto;
             position: relative;
             animation: modalFadeIn 0.3s ease;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.6);
         }
 
         @keyframes modalFadeIn {
@@ -350,7 +359,7 @@
         
         .modal-gallery {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 в ряд */
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
             margin-top: 30px;
         }
@@ -375,53 +384,28 @@
             max-width: 95vw;
             max-height: 95vh;
             border-radius: 8px;
-            border: 2px solid var(--accent-color);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
         }
 
-        /* CONTACT SECTION WITH ANIMATED GLOWING BORDER */
+        /* CONTACT SECTION */
         .contact-section {
             padding: 100px 0 100px 0;
             width: 100%;
         }
 
-        .contact-box-wrapper {
-            position: relative;
-            padding: 2px; /* Товщина анімованої рамки */
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            width: 100%; /* Така ж ширина як у блоку кейсів */
-        }
-
-        /* Анімований промінь по колу */
-        .contact-box-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, transparent 70%, var(--accent-color) 100%);
-            animation: rotateGlow 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 0;
-        }
-
-        .contact-box-wrapper:hover::before {
-            opacity: 1; /* З'являється тільки при наведенні */
-        }
-
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         .contact-box {
             background: var(--surface-color);
-            border-radius: calc(var(--radius-lg) - 2px);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
             padding: 80px 40px;
             text-align: center;
             position: relative;
             z-index: 1;
             width: 100%;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
 
         .contact-box h2 {
@@ -610,25 +594,23 @@
     <!-- CONTACT SECTION -->
     <section id="contacts" class="container contact-section">
         
-        <div class="contact-box-wrapper">
-            <div class="contact-box">
-                <h2>Готові до зростання?</h2>
-                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Забронюйте безкоштовний аудит ваших поточних рекламних кампаній та отримайте план масштабування.</p>
-                
-                <div class="contact-grid">
-                    <a href="https://t.me/dm_movchan" target="_blank" class="btn-action highlight">
-                        <i class="fa-brands fa-telegram"></i> Написати в Telegram
-                    </a>
-                    <a href="tel:+380971805909" class="btn-action">
-                        <i class="fa-solid fa-phone"></i> Набрати мене
-                    </a>
-                    <a href="mailto:movchan.target@gmail.com" class="btn-action">
-                        <i class="fa-regular fa-envelope"></i> Email
-                    </a>
-                    <a href="https://www.instagram.com/mads_marketing_agency" target="_blank" class="btn-action">
-                        <i class="fa-brands fa-instagram"></i> Ми в Instagram
-                    </a>
-                </div>
+        <div class="contact-box">
+            <h2>Готові до зростання?</h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Забронюйте безкоштовний аудит ваших поточних рекламних кампаній та отримайте план масштабування.</p>
+            
+            <div class="contact-grid">
+                <a href="https://t.me/dm_movchan" target="_blank" class="btn-action highlight">
+                    <i class="fa-brands fa-telegram"></i> Написати в Telegram
+                </a>
+                <a href="tel:+380971805909" class="btn-action">
+                    <i class="fa-solid fa-phone"></i> Набрати мене
+                </a>
+                <a href="mailto:movchan.target@gmail.com" class="btn-action">
+                    <i class="fa-regular fa-envelope"></i> Email
+                </a>
+                <a href="https://www.instagram.com/mads_marketing_agency" target="_blank" class="btn-action">
+                    <i class="fa-brands fa-instagram"></i> Ми в Instagram
+                </a>
             </div>
         </div>
 
