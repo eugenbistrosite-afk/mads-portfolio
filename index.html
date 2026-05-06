@@ -102,7 +102,7 @@
 
         /* UPLOADED LOGO */
         .mads-image-logo {
-            max-width: 300px;
+            max-width: 200px;
             width: 100%;
             height: auto;
             margin-bottom: 40px;
@@ -123,12 +123,12 @@
         }
 
         .hero h1 {
-            font-size: clamp(48px, 8vw, 96px);
+            font-size: clamp(40px, 5.5vw, 76px);
             font-weight: 700;
             letter-spacing: -0.04em;
-            line-height: 1.05;
+            line-height: 1.1;
             margin-bottom: 24px;
-            max-width: 900px;
+            max-width: 1000px;
         }
 
         .hero h1 span {
@@ -167,9 +167,9 @@
         .btn-action:hover {
             background: rgba(255, 255, 255, 0.08);
             color: #fff;
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(212, 255, 0, 0.15);
         }
         
         .btn-action.highlight {
@@ -354,19 +354,21 @@
 
         .close-btn:hover { color: var(--accent-color); }
 
+        .text-accent { color: var(--accent-color); }
+
         .modal-title { font-size: 32px; margin-bottom: 20px; color: var(--accent-color); }
         .modal-desc { font-size: 18px; color: var(--text-primary); margin-bottom: 10px; line-height: 1.6; }
         
         .modal-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 20px;
             margin-top: 30px;
         }
 
         .modal-gallery img {
             width: 100%;
-            height: 250px;
+            height: auto;
             object-fit: cover;
             border-radius: 12px;
             border: 1px solid var(--border-color);
@@ -425,16 +427,36 @@
 
         /* FOOTER */
         footer {
-            text-align: center;
             padding: 40px 20px;
             border-top: 1px solid var(--border-color);
             margin-top: 50px;
         }
         
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
         footer p {
             color: var(--text-secondary);
             font-size: 14px;
             letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .footer-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+            color: #fff;
         }
 
         /* MOBILE ADJUSTMENTS */
@@ -450,6 +472,7 @@
             .hero h1 { font-size: 40px; }
             .btn-action { width: 100%; }
             .modal-gallery { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; text-align: center; justify-content: center; }
         }
     </style>
 </head>
@@ -618,7 +641,10 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>MADS - Digital Marketing Agency - 2019</p>
+        <div class="container footer-content">
+            <p>MADS - Digital Marketing Agency - 2019</p>
+            <p>Розроблено: <a href="https://bistro-site.online/" target="_blank" class="footer-link">Bistro-site</a> 2026</p>
+        </div>
     </footer>
 
     <!-- MODAL POPUPS -->
@@ -627,9 +653,9 @@
         <div class="modal-content">
             <span class="close-btn" id="closeProject">&times;</span>
             <h2 class="modal-title">1. Виставки - B2C та B2B</h2>
-            <div class="modal-desc"><strong>Клієнт:</strong> Міжнародна виставка та конференція</div>
-            <div class="modal-desc"><strong>Завдання:</strong> Залучення цільових відвідувачів та збільшення кількості реєстрацій учасників.</div>
-            <div class="modal-desc"><strong>Результат:</strong> Стабільний потік заявок за зниженою ціною, перевиконання плану на 140%. Детальніше на скріншотах з кабінетів нижче.</div>
+            <div class="modal-desc"><strong class="text-accent">Клієнт:</strong> Міжнародна виставка та конференція</div>
+            <div class="modal-desc"><strong class="text-accent">Завдання:</strong> Залучення цільових відвідувачів та збільшення кількості реєстрацій учасників.</div>
+            <div class="modal-desc"><strong class="text-accent">Результат:</strong> Стабільний потік заявок за зниженою ціною, перевиконання плану на 140%. Детальніше на скріншотах з кабінетів нижче.</div>
             
             <div class="modal-gallery">
                 <img src="unnamed.jpg" alt="Результати 1" class="gallery-item">
